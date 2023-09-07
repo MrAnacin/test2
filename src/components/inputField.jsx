@@ -4,13 +4,14 @@ import { useSendMessageMutation } from "../redux/baseApi";
 import { Icon } from "@iconify/react";
 
 const ChatInputBox = styled.div`
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 60px;
-  background: #f0f0f0;
+  background: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  bottom: 0;
 `;
 
 const TextInput = styled.input`
@@ -57,7 +58,7 @@ function InputField({ setMessage }) {
   console.log(reciever);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Загрузка...</div>;
   }
 
   if (isError || error) {
@@ -82,7 +83,7 @@ function InputField({ setMessage }) {
       });
       setMessageText("");
     } catch (err) {
-      console.error("Error sending the message:", err);
+      console.error("Ошибка отправки сообщения", err);
     }
   };
 
@@ -90,7 +91,7 @@ function InputField({ setMessage }) {
     <ChatInputBox>
       <TextInput
         type="text"
-        placeholder="Пиши сообщение тут"
+        placeholder="Сообщение"
         name="text"
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}

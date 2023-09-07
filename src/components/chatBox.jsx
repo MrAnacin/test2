@@ -26,12 +26,12 @@ const ConversationContainer = styled.div`
 
 const AddresseeBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 60px;
-  background: #005e54;
-  color: #fff;
+  background: #00FF00;
+  color: black;
   padding: 0 8px;
   font-size: 24px;
   position: relative;
@@ -39,7 +39,7 @@ const AddresseeBox = styled.div`
 `;
 
 const AddresseeName = styled.h4`
-  font-size: 17px;
+  font-size: 30px;
   font-weight: 400;
   text-overflow: ellipsis;
   letter-spacing: 0.3px;
@@ -48,17 +48,18 @@ const AddresseeName = styled.h4`
   white-space: nowrap;
 `;
 
+
 function ChatBox() {
   const [messages, setMessages] = useState([]);
   const [recMessages, setRecMessages] = useState([]);
-  const addressee = localStorage.getItem("addressee"); // Retrieve the number from local storage(change to cookies)
+  const addressee = localStorage.getItem("addressee");
 
   const [deleteNotification] = useDeleteNotificationMutation();
 
   const { data: receivedMessages, refetch: refetchNotifications } =
     useRecieveNotificationQuery({
-      idInstance: localStorage.getItem("userId"), //change to cookies
-      apiTokenInstance: localStorage.getItem("apiToken"), //change to cookies
+      idInstance: localStorage.getItem("userId"),
+      apiTokenInstance: localStorage.getItem("apiToken"), 
     });
   console.log(receivedMessages);
 
@@ -90,7 +91,7 @@ function ChatBox() {
       console.log(data);
       console.log(data.requestId);
     } catch (error) {
-      console.error("Error while refetching:", error);
+      console.error("Ошибка", error);
     }
   };
   return (
@@ -109,7 +110,9 @@ function ChatBox() {
           ))}
         </ConversationContainer>
         <InputField setMessage={setMessages} />
-        <button onClick={HandleReceiving}>Check button</button>
+        <div>
+          <button onClick={HandleReceiving}>Проверка</button>
+        </div>
       </MainBox>
     </div>
   );

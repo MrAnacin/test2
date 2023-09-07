@@ -22,7 +22,7 @@ const MessageText = styled.p`
 function MessageRecieved() {
   return (
     <MessageBox>
-      <MessageText>Hi there</MessageText>
+      <MessageText></MessageText>
     </MessageBox>
   );
 }

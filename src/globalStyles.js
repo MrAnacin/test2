@@ -25,12 +25,19 @@ export const GlobalStyle = createGlobalStyle`
   ._btn {
     cursor: pointer;
     border: 0;
+    background-color: #005e54; 
+    color: #fff; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in-out;
   }
   
   
   html,
   body {
-    background: #111b21;
+    background: #white;
     min-height: 100vh;
     color: #000;
   }
